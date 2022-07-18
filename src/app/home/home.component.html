@@ -1,0 +1,57 @@
+
+<br>
+<div class="container">
+  <h3 style="text-align:center"><b>Search All Data:</b></h3>
+    <input type="text" class="form-control" id="filter-text-box" [(ngModel)]="SearchText" placeholder="Search" (ngModelChange)="onFilterBoxChanged()">
+ 
+
+
+
+
+
+    
+
+  <h3 style="text-align:center"><b>Filter and Sort Columns Based on Conditions:</b></h3>
+  </div>
+   
+
+
+
+
+    
+  
+  
+
+
+
+
+
+
+<div class="grid-data">
+  <label><b>Upload File:</b></label>
+  <div class="form-group">
+    <input type="file" class="form-control-file" accept=".xls, .xlsx" (change)="fileUpload($event)">      
+  
+  </div>
+
+
+  <div class="form-group">
+    <input type="file" class="form-control-file" accept=".xls, .xlsx" (change)="uploadJSONToRTDB($event)">      
+  
+  </div>
+<ag-grid-angular
+style="width: 100% ; height: 550px;"
+class="ag-theme-balham"
+[rowData]="rowData | async"
+[columnDefs]="columnDefs"
+(gridReady)="onGridReady1($event)"
+>
+</ag-grid-angular>
+</div>
+
+<div><pre>
+
+{{convertedJson}}
+
+</pre>
+</div>

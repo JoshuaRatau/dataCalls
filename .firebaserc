@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "testing-6becd": {
+      "hosting": {
+        "data-calls": [
+          "testing-6becd"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "testing-6becd"
+  }
+}

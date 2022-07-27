@@ -13,10 +13,17 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from "@angular/forms";
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -31,6 +38,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AgGridModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
     HttpClientModule,
     AngularFireModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),

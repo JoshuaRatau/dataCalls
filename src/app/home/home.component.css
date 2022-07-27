@@ -1,5 +1,15 @@
 .grid-data{
     padding-left: 15px;
     padding-right: 15px;
+    overflow-x: hidden;
 }
 
+.ag-body-viewport {
+    overflow-x: hidden;
+  }
+
+.ag-body-viewport-wrapper.ag-layout-normal {
+    overflow-x: hidden;
+  }
+
+  body { overflow-y: hidden; /* Hide vertical scrollbar */ overflow-x: hidden; /* Hide horizontal scrollbar */}

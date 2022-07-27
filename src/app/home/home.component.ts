@@ -7,6 +7,7 @@ import { ThisReceiver } from '@angular/compiler';
 
 import * as XLSX from 'xlsx'
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 })
 export class HomeComponent implements OnInit {
 
-
+  form!: FormGroup;
   convertedJson!:string;
 
 
@@ -34,14 +35,10 @@ export class HomeComponent implements OnInit {
         this.convertedJson = JSON.stringify(data, undefined, 4)
       })
       console.log(workbook)
-
+        
     }
   }
-  async uploadJSONToRTDB(convertedJson: any): Promise<void> {
-    // reference the node
-    const ref = this.db.database.ref('Data/');
-    await ref.set(convertedJson);
-  }
+
   gridApiActive: any;
   columnDefs: ColDef[] = [
     
@@ -69,11 +66,21 @@ export class HomeComponent implements OnInit {
 ];
 
 
+
+async onSubmit(convertedJson: any): Promise<void> {
+  // reference the node
+  const ref = this.db.database.ref("https://testing-6becd-default-rtdb.firebaseio.com/Data.json");
+  await ref.set(convertedJson);
+}
+
+
+
 rowData :any;
     
 onGridReady1(params:any){
 this.gridApiActive = params.api;
-  this.rowData = this.http.get("https://testing-6becd-default-rtdb.firebaseio.com/Data.json");
+   this.rowData = this.http.get("https://testing-6becd-default-rtdb.firebaseio.com/Data.json");
+   
 }
 
 
@@ -91,12 +98,8 @@ onGridSizeChanged(params: GridSizeChangedEvent) {
     ) { }
 
 
-
-  
   ngOnInit(): void {
     
     this.rowData = this.http.get("https://testing-6becd-default-rtdb.firebaseio.com/Data.json");
   }
-  
-
 }

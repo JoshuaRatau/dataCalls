@@ -2,7 +2,7 @@
 <br>
 <div class="container">
   <h3 style="text-align:center"><b>Search All Data:</b></h3>
-    <input type="text" class="form-control" id="filter-text-box" [(ngModel)]="SearchText" placeholder="Search" (ngModelChange)="onFilterBoxChanged()">
+    <input type="text" class="form-control" id="filter-text-box" [(ngModel)]="SearchText" placeholder="Search" (ngModelChange)="onFilterBoxChanged()" style="text-align:center">
  
 
 
@@ -28,30 +28,52 @@
 
 
 <div class="grid-data">
-  <label><b>Upload File:</b></label>
-  <div class="form-group">
-    <input type="file" class="form-control-file" accept=".xls, .xlsx" (change)="fileUpload($event)">      
+
   
-  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+                 
+                        <div class="form-group">
+                          <input type="file" name="file" (change)="fileUpload($event)"/>
+                       <br>
+                    <input class="btn btn-success" type="submit" name="submit_file" value="Submit"  (change)="fileUpload($event)"/>
+                  </div>
+                </form>
+          
+  </div> 
 
 
-  <div class="form-group">
-    <input type="file" class="form-control-file" accept=".xls, .xlsx" (change)="uploadJSONToRTDB($event)">      
+
+
+
+
+  <!-- (click)="exportAsExcel()" -->
+<!-- 
+  <div class="export-button-container">
+    <button  
+            matTooltip="Eksport table to Excel document"
+            mat-raised-button>
+            Export as Excel
+              < <mat-icon>get_app</mat-icon> -->
+    <!-- </button> --> 
   
-  </div>
 <ag-grid-angular
-style="width: 100% ; height: 550px;"
+style="width: 100%; height: 500px;"
 class="ag-theme-balham"
+[pagination]="true"
 [rowData]="rowData | async"
 [columnDefs]="columnDefs"
+[animateRows]="true"
 (gridReady)="onGridReady1($event)"
 >
 </ag-grid-angular>
-</div>
 
-<div><pre>
+ <div><pre>
 
-{{convertedJson}}
+
 
 </pre>
-</div>
+</div> 
+ <div>
+
+{{convertedJson}}
+</div> 
